@@ -1,0 +1,181 @@
+<!--
+  Copyright 2021 Ocean (iot.redplc@gmail.com).
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/javascript">
+    RED.nodes.registerType('ads1x15', {
+        category: 'redPlc modules',
+        color: 'ORANGE',
+        paletteLabel: 'ads1x15',
+        defaults: {
+            addressai: { value: 0, required: true, validate: function (v) { return RED.validators.number(v) && (v >= 0) && (v <= 999); } },
+            devtyp:  { value: "1", required: true },
+            devadr:  { value: "0", required: true },
+            gain0:   { value: "1", required: true },
+            gain1:   { value: "1", required: true },
+            gain2:   { value: "1", required: true },
+            gain3:   { value: "1", required: true },
+            mux0:    { value: "4", required: true },
+            mux1:    { value: "5", required: true },
+            mux2:    { value: "6", required: true },
+            mux3:    { value: "7", required: true },
+            factor0: { value: 1, required: true, validate: function (v) { return !isNaN(Number(v)); } },
+            factor1: { value: 1, required: true, validate: function (v) { return !isNaN(Number(v)); } },
+            factor2: { value: 1, required: true, validate: function (v) { return !isNaN(Number(v)); } },
+            factor3: { value: 1, required: true, validate: function (v) { return !isNaN(Number(v)); } },
+            offset0: { value: 0, required: true, validate: function (v) { return !isNaN(Number(v)); } },
+            offset1: { value: 0, required: true, validate: function (v) { return !isNaN(Number(v)); } },
+            offset2: { value: 0, required: true, validate: function (v) { return !isNaN(Number(v)); } },
+            offset3: { value: 0, required: true, validate: function (v) { return !isNaN(Number(v)); } },
+
+        },
+        inputs: 1,
+        outputs: 1,
+		inputLabels: "in:string",
+		outputLabels: ["out:string"],
+        icon: "rpi.svg",
+        label: function() {
+            var adr = "@" + (0x48 + parseInt(this.devadr)).toString(16).toUpperCase();
+            return (this.devtyp == "1") ? "ads1115 " + adr : "ads1015 " + adr;
+        },
+    });
+</script>
+
+<script type="text/html" data-template-name="ads1x15">
+    <div class="form-row">
+        <label style="width:100%; border-bottom: 1px solid #eee;">redPlc ads1015/1115 Module</label>
+    </div>
+    <div class="form-row">
+        <label for="node-input-addressai"><i class="fa fa-list"></i> Address <b>&nbsp;IA<b></label>
+        <input id="node-input-addressai" placeholder="Address" value=0 input type="number" min="0" max="999" required style="width: auto;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-devtyp"><i class="fa fa-microchip"></i> Dev-Type</label>
+        <select type="text" id="node-input-devtyp" style="width: auto;">
+            <option value="0">ads1015</option>
+            <option value="1">ads1115</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-devadr"><i class="fa fa-cogs"></i> Dev-Addr.</label>
+        <select type="text" id="node-input-devadr" style="width: auto;">
+            <option value="0">48H</option>
+            <option value="1">49H</option>
+            <option value="2">4AH</option>
+            <option value="3">4BH</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label style="width:100%; border-bottom: 1px solid #a9a9a9;">Input AI0</label>
+        <label for="node-input-mux0"><i class="fa fa-random"></i> Mode</label>
+        <select type="text" id="node-input-mux0" style="width: auto;">
+            <option value="4">AI0-GND</option>
+            <option value="0">AI0-AI1</option>
+            <option value="99">disabled</option>
+        </select>
+        <label style="width: auto;"> +/- Range</label>
+        <select type="text" id="node-input-gain0" style="width: auto;">
+            <option value="0">6.144V</option>
+            <option value="1">4.096V</option>
+            <option value="2">2.048V</option>
+            <option value="3">1.024V</option>
+            <option value="4">0.512V</option>
+            <option value="5">0.256V</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-factor0"><i class="fa fa-calculator"></i> Factor</label>
+        <input id="node-input-factor0" placeholder="Factor" input type="text" required style="width: 10em;">
+        <label style="width: auto;"> Offset</label>
+        <input id="node-input-offset0" placeholder="Offset" input type="text" required style="width: 10em;">
+    </div>
+
+    <div class="form-row">
+        <label style="width:100%; border-bottom: 1px solid #a9a9a9;">Input AI1</label>
+        <label for="node-input-mux1"><i class="fa fa-random"></i> Mode</label>
+        <select type="text" id="node-input-mux1" style="width: auto;">
+            <option value="5">AI1-GND</option>
+            <option value="2">AI1-AI3</option>
+            <option value="99">disabled</option>
+        </select>
+        <label style="width: auto;"> +/- Range</label>
+        <select type="text" id="node-input-gain1" style="width: auto;">
+            <option value="0">6.144V</option>
+            <option value="1">4.096V</option>
+            <option value="2">2.048V</option>
+            <option value="3">1.024V</option>
+            <option value="4">0.512V</option>
+            <option value="5">0.256V</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-factor1"><i class="fa fa-calculator"></i> Factor</label>
+        <input id="node-input-factor1" placeholder="Factor" input type="text" required style="width: 10em;">
+        <label style="width: auto;"> Offset</label>
+        <input id="node-input-offset1" placeholder="Offset" input type="text" required style="width: 10em;">
+    </div>
+
+    <div class="form-row">
+        <label style="width:100%; border-bottom: 1px solid #a9a9a9;">Input AI2</label>
+        <label for="node-input-mux2"><i class="fa fa-random"></i> Mode</label>
+        <select type="text" id="node-input-mux2" style="width: auto;">
+            <option value="6">AI2-GND</option>
+            <option value="3">AI2-AI3</option>
+            <option value="99">disabled</option>
+        </select>
+        <label style="width: auto;"> +/- Range</label>
+        <select type="text" id="node-input-gain2" style="width: auto;">
+            <option value="0">6.144V</option>
+            <option value="1">4.096V</option>
+            <option value="2">2.048V</option>
+            <option value="3">1.024V</option>
+            <option value="4">0.512V</option>
+            <option value="5">0.256V</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-factor2"><i class="fa fa-calculator"></i> Factor</label>
+        <input id="node-input-factor2" placeholder="Factor" input type="text" required style="width: 10em;">
+        <label style="width: auto;"> Offset</label>
+        <input id="node-input-offset2" placeholder="Offset" input type="text" required style="width: 10em;">
+    </div>
+
+
+    <div class="form-row">
+        <label style="width:100%; border-bottom: 1px solid #a9a9a9;">Input AI3</label>
+        <label for="node-input-mux3"><i class="fa fa-random"></i> Mode</label>
+        <select type="text" id="node-input-mux3" style="width: auto;">
+            <option value="7">AI3-GND</option>
+            <option value="1">AI0-AI3</option>
+            <option value="99">disabled</option>
+        </select>
+        <label style="width: auto;"> +/- Range</label>
+        <select type="text" id="node-input-gain3" style="width: auto;">
+            <option value="0">6.144V</option>
+            <option value="1">4.096V</option>
+            <option value="2">2.048V</option>
+            <option value="3">1.024V</option>
+            <option value="4">0.512V</option>
+            <option value="5">0.256V</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-factor3"><i class="fa fa-calculator"></i> Factor</label>
+        <input id="node-input-factor3" placeholder="Factor" input type="text" required style="width: 10em;">
+        <label style="width: auto;"> Offset</label>
+        <input id="node-input-offset3" placeholder="Offset" input type="text" required style="width: 10em;">
+    </div>
+</script>

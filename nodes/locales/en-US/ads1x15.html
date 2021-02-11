@@ -1,0 +1,52 @@
+<!--
+  Copyright 2021 Ocean (iot.redplc@gmail.com).
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/html" data-help-name="ads1x15">
+    <p>redPlc Automation HAT Module.</p>
+    <h3><b>Input:</b></h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">string</span></dt>
+    </dl>
+    <h3><b>Output:</b></h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">string</span></dt>
+    </dl>
+    <h3><b>Variable:</b></h3>
+        <dl class="message-properties">
+            <dt>IA </b><i>adr[index]</i> Analog Input<span class="property-type">number</span></dt>
+            <dd>Single-Ended</dd>
+            <dd>Array index 0 <- AI0-GND</dd>
+            <dd>Array index 1 <- AI1-GND</dd>
+            <dd>Array index 2 <- AI2-GND</dd>
+            <dd>Array index 3 <- AI3-GND</dd>
+            <dd>Differential Inputs</dd>
+            <dd>Array index 0 <- AI0-AI1</dd>
+            <dd>Array index 1 <- AI1-AI3</dd>
+            <dd>Array index 2 <- AI2-AI3</dd>
+            <dd>Array index 3 <- AI0-AI3</dd>
+        </dl>
+    <h3><b>Details:</b></h3>
+    <p>
+        Reads analog inputs on payload "input"<br>
+        and stores in global variable as array.<br>
+        Output value is in mV.<br>
+        Scaled Value = Input * Factor + Offset.<br>
+        <p class="form-tips">
+            This node works only on Raspberry Pi.<br>
+            Enable i2c with raspi-config.<br>
+        </p>
+	</p>
+</script>

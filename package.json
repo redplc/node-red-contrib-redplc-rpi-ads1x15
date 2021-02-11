@@ -1,0 +1,28 @@
+{
+  "name": "node-red-contrib-redplc-rpi-ads1x15",
+  "version": "1.0.9",
+  "description": "Node-Red node for ads1015/ads1115 adc",
+
+  "dependencies": {
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/redplc/node-red-contrib-redplc-rpi-ads1x15"
+  },
+
+  "license": "Apache-2.0",
+  "keywords": ["node-red", "raspberry pi", "rpi", "ads1015", "ads1115", "iot", "iiot", "analog", "plc", "redplc", "control"],
+
+  "node-red": {
+    "nodes": {
+      "redplc-rpi-ads1x15": "nodes/ads1x15.js"
+    }
+  },
+
+  "author": {
+    "name": "Ocean",
+    "email": "iot.redplc@gmail.com",
+    "url": "https://github.com/redplc/node-red-contrib-redplc-rpi-ads1x15"
+  }
+}
