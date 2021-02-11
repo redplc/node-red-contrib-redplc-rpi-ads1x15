@@ -45,7 +45,7 @@
         outputs: 1,
 		inputLabels: "in:string",
 		outputLabels: ["out:string"],
-        icon: "rpi.svg",
+        icon: "raspi.png",
         label: function() {
             var adr = "@" + (0x48 + parseInt(this.devadr)).toString(16).toUpperCase();
             return (this.devtyp == "1") ? "ads1115 " + adr : "ads1015 " + adr;

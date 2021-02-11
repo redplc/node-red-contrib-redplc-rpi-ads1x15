@@ -36,20 +36,20 @@ Consult datasheet for absolute maximum ratings.<br>
 
 ### Analog Input (Variable IA):
 *Single-Ended Mode:*
-|Input|Array-Index|
-|:----|:-:|
-|IA0-GND|0|
-|IA1-GND|1|
-|IA2-GND|2|
-|IA3-GND|3|
+|Input|Array-Index
+|----|---
+|IA0-GND|0
+|IA1-GND|1
+|IA2-GND|2
+|IA3-GND|3
 
 *Two Differential Inputs Mode:*
-|Input|Array-Index|
-|:----|:-:|
-|AI0-AI1|0|
-|AI1-AI3|1|
-|AI2-AI3|2|
-|AI0-AI3|3|
+|Input|Array-Index
+|---|---
+|AI0-AI1|0
+|AI1-AI3|1
+|AI2-AI3|2
+|AI0-AI3|3
 
 ### Scaling with Factor and Offset:
 
