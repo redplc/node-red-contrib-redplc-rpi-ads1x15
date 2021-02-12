@@ -1,6 +1,6 @@
-# node-red-contrib-redplc-ads1x15
+# node-red-contrib-redplc-rpi-ads1x15
 
-Node-Red node for ads1015-12bit/ads1115-16bit adc.<br>
+Node-Red node for ads1015/ads1115 analog to digital converter<br>
 
 ## Node Features
 - Supports ads1015/ads1115 analog to digital converter
@@ -15,41 +15,41 @@ Node-Red node for ads1015-12bit/ads1115-16bit adc.<br>
 ## Install
 
 For using with Ladder-Logic install
-[redPlc](https://www.npmjs.com/package/node-red-contrib-redplc)
+[redPlc](https://www.npmjs.com/package/node-red-contrib-redplc) nodes
 
 For using with other nodes, install
-[module-nodes](https://www.npmjs.com/package/node-red-contrib-redplc-module)
+[module](https://www.npmjs.com/package/node-red-contrib-redplc-module) nodes
 
 Install with Node-Red Palette Manager or npm command:
 ```
 cd ~/.node-red
-npm install node-red-contrib-redplc-ads1x15
+npm install node-red-contrib-redplc-rpi-ads1x15
 ```
 
 ## Usage
-This node writes to Node-Red global variables.<br>
+This node writes to Node-Red global variables<br>
 Update is triggered by redPlc cpu node<br>
-or module-update node.<br>
-This node works only on Raspberry Pi with Raspberry Pi OS.<br>
-Enable I2C with raspi-config.<br>
-Consult datasheet for absolute maximum ratings.<br>
+or module-update node<br>
+This node works only on Raspberry Pi with Raspberry Pi OS<br>
+Enable I2C with raspi-config<br>
+Consult datasheet for absolute maximum ratings<br>
 
 ### Analog Input (Variable IA):
 *Single-Ended Mode:*
 |Input|Array-Index
-|----|---
-|IA0-GND|0
-|IA1-GND|1
-|IA2-GND|2
-|IA3-GND|3
+|:----|:---:|
+|IA0-GND|0|
+|IA1-GND|1|
+|IA2-GND|2|
+|IA3-GND|3|
 
 *Two Differential Inputs Mode:*
 |Input|Array-Index
-|---|---
-|AI0-AI1|0
-|AI1-AI3|1
-|AI2-AI3|2
-|AI0-AI3|3
+|:---|:---:|
+|AI0-AI1|0|
+|AI1-AI3|1|
+|AI2-AI3|2|
+|AI0-AI3|3|
 
 ### Scaling with Factor and Offset:
 
